@@ -1,0 +1,5 @@
+SUMMON=.run
+NAME=discord_py_template
+AUTHOR=HostBase Server Group
+VERSION=2
+SELECTIVE=true

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in</title>
+  
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #333;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 300px;
+        margin: 100px auto;
+        background-color: #444;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 93%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        background-color: #555;
+        color: #fff;
+        outline: 0;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    a {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Log in</h2>
+    <p class="err"></p>
+    <form id="loginForm" method="POST">
+      <div class="input-group">
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Log in</button>
+    </form>
+    <a href="/register">Not a member? Register instead!</a>
+  </div>
+  
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        //event.preventDefault();
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        
+        // You can implement your own login logic here
+        //console.log("Sending information...");
+    });
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const error = urlParams.get('code');
+    if (error) {
+      document.querySelector('p.err').innerHTML = error;
+      window.history.pushState({}, null, `${window.location.protocol}//${window.location.host}${window.location.pathname}`);
+    }
+  </script>
+</body>
+</html>
